@@ -85,16 +85,7 @@ The plots show median results for random input:
 
 ## Testing
 
-Run `mvn test`. The sorting tests compare both implementations with `Arrays.sort()` for random, sorted, reverse-sorted, duplicate-heavy, empty, and single-element inputs. Deterministic Select is checked on 250 randomized arrays/ranks against the sorted reference and for preservation of the input multiset. Closest Pair is checked against an O(n²) brute-force reference on randomized datasets, duplicate points, and a 2,000-point dataset.
+Run:
 
-## Reflection
-
-Implementing all four algorithms made the distinction between theoretical guarantees and the details that preserve them especially clear. Reusing MergeSort's buffer avoids repeated allocations, smaller-first recursion bounds QuickSort's stack without changing its worst-case running time, and grouping by five is what gives deterministic selection its guaranteed linear bound.
-
-The closest-pair implementation required the most careful coordination: points are initially sorted in both coordinate orders, the y-order must be partitioned with each recursive x-range, and the strip scan must retain that y-order to stay linear per level. Comparing it with brute force on small datasets and tracking comparisons alongside time helped validate both correctness and the intended divide-and-conquer structure.
-
-## Screenshots
-
-- Program output: [program-output.png](docs/screenshots/program-output.png)
-- JUnit test results: [test-results.png](docs/screenshots/test-results.png)
-- Generated plots/results: [plots-results.png](docs/screenshots/plots-results.png)
+```bash
+mvn test
