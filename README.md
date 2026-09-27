@@ -187,6 +187,3 @@ The experiments also demonstrated that theoretical complexity and measured execu
 
 ![Test results](docs/screenshots/test-results.png)
 
-### Plots
-
-![Plots](docs/screenshots/plots-results.png)
