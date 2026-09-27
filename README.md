@@ -96,10 +96,15 @@ These measurements are machine- and JVM-dependent. The runs are short and use th
 
 ### Plot References
 
-The plots show median results for random input:
+The plots show median results for random input.
 
-- [Execution time vs. n](docs/plots/execution-time-vs-n.png)
-- [Maximum recursion depth vs. n](docs/plots/recursion-depth-vs-n.png)
+#### Execution Time vs. n
+
+![Execution time vs. n](docs/plots/execution-time-vs-n.png)
+
+#### Maximum Recursion Depth vs. n
+
+![Maximum recursion depth vs. n](docs/plots/recursion-depth-vs-n.png)
 
 ## Discussion
 
@@ -148,3 +153,40 @@ Run the complete test suite with:
 
 ```bash
 mvn test
+```
+
+The latest verified test run completed successfully:
+
+```text
+Tests run: 3
+Failures: 0
+Errors: 0
+Skipped: 0
+BUILD SUCCESS
+```
+
+The three JUnit test methods contain multiple individual test cases, including 250 random selection cases and multiple closest-pair datasets.
+
+## Reflection
+
+The project demonstrated how divide-and-conquer algorithms can have different theoretical guarantees and practical behavior while following the same general strategy.
+
+Implementing four different algorithms showed the importance of preserving the properties that provide their complexity guarantees. Reusing MergeSort's auxiliary buffer avoids unnecessary allocations, smaller-first recursion limits QuickSort stack growth, and grouping elements by five provides the pivot guarantee required by deterministic selection.
+
+The closest-pair implementation required careful coordination of the x-ordered and y-ordered data. Maintaining y-order during the recursive process is necessary for the strip scan to remain linear at each level.
+
+The experiments also demonstrated that theoretical complexity and measured execution time are not identical. JVM warm-up, JIT compilation, memory allocation, cache behavior, input structure, and other system factors can affect short benchmark runs.
+
+## Screenshots
+
+### Program Output
+
+![Program output](docs/screenshots/program-output.png)
+
+### Test Results
+
+![Test results](docs/screenshots/test-results.png)
+
+### Plots
+
+![Plots](docs/screenshots/plots-results.png)
